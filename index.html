@@ -5,13 +5,63 @@
         <title>rnbo test</title>
         <script type="text/javascript" src="https://cdn.cycling74.com/rnbo/latest/rnbo.min.js"></script>
         <link rel="icon" href="favicon.svg">
+        <style>
+            svg #circle1 {
+                animation: pulse 3s alternate infinite;
+            }
+
+            svg #circle2 {
+                animation: pulse 5s alternate infinite;
+            }
+            svg #circle3 {
+                animation: pulse 8s alternate infinite;
+            }
+
+            @keyframes pulse {
+                from {
+                    transform-origin: 50% 50%;
+                    transform: scale(.98);
+                }
+                to {
+                    transform-origin: 50% 50%;
+                    transform: scale(1.05);
+                }
+            }
+        </style>
     </head>
-    <body style="display: flex; flex-direction: column; margin: 0; align-items: center; justify-content: flex-start; gap: 16px;">
-        <div id="rnbo-parameter-sliders" style="margin-top: 200px; position: absolute; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+    <body style="background-color: black; display: flex; flex-direction: column; margin: 0; align-items: center; justify-content: flex-start; gap: 16px;">
+        <div id="rnbo-parameter-sliders" style="margin-top: 180px; position: absolute; display: flex; flex-direction: column; align-items: center; gap: 16px;">
             <button id="start-button">Start Audio</button>
             <em id="no-param-label"></em>
         </div>
-        <img src="images/circles.svg" alt="concentric circles">
+        <svg width="1200" height="1000" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="circles">
+            <rect width="120" height="100" fill="black"/>
+            <g id="circles">
+                 <circle id="circle3"
+                    cx="60"
+                    cy="40"
+                    r="38"
+                    fill="#464646"
+                />
+                <g id="circle2">
+                    <circle
+                        cx="60" 
+                        cy="40" 
+                        r="32" 
+                        fill="#908E8E"
+                    />
+                </g>
+                <g id="circle1">
+                    <circle
+                        cx="60" 
+                        cy="40" 
+                        r="26.5" 
+                        fill="#E5E2E2"
+                    />
+                </g>
+            </g>
+        </svg>
         <script src="js/rnbo-test-2.js"></script>
     </body>
 </html>
