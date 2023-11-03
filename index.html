@@ -6,6 +6,71 @@
         <script type="text/javascript" src="https://cdn.cycling74.com/rnbo/latest/rnbo.min.js"></script>
         <link rel="icon" href="favicon.svg">
         <style>
+
+            .shiftUp {
+                animation: shiftUp 1s ease alternate forwards;
+            }
+            
+            @keyframes shiftUp {
+                from{
+                    transform: translateY(0);
+                }
+                to{
+                    transform: translateY(-180px);
+                }
+            }
+
+            .shiftDown {
+                animation: shiftDown 1s ease;
+            }
+            
+            @keyframes shiftDown {
+                from{
+                    transform: translateY(-180px);
+                }
+                to{
+                    transform: translateY(0px);
+                }
+            }
+
+            .transparent {
+                animation: disappear .3s ease forwards;
+            }
+
+            @keyframes disappear {
+                from{
+                    opacity: 1;
+                }
+                to{
+                    opacity:0;
+                }
+            }
+
+            .opaque {
+                animation: appear 1s ease forwards;
+                animation-delay: 1s;
+            }
+
+            @keyframes appear {
+                from{
+                    opacity: 0;
+                }
+                to{
+                    opacity: 1;
+                }
+            }
+
+            #start-button{
+                width: 100px;
+                height: 30px;
+                transition: all .5s ease-out;
+            }
+
+            #start-button:hover{
+                width: 120px;
+                height: 36px;
+            }
+
             svg #circle1 {
                 animation: pulse 3s alternate infinite;
             }
@@ -30,8 +95,8 @@
         </style>
     </head>
     <body style="font-family:'Andale Mono', monospace; background-color: black; display: flex; flex-direction: column; margin: 0; align-items: center; justify-content: flex-start; gap: 16px;">
-        <div id="rnbo-parameter-sliders" style="margin-top: 180px; position: absolute; display: flex; flex-direction: column; align-items: center; gap: 16px;">
-            <button id="start-button" style="font-family:'Andale Mono', monospace;">Start Audio</button>
+        <div class="parameters" id="rnbo-parameter-sliders" style="margin-top: 350px; position: absolute; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+            <button id="start-button" style="font-family:'Andale Mono', monospace;" >Start Audio</button>
             <em id="no-param-label"></em>
         </div>
         <svg width="1200" height="1000" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
