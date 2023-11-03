@@ -56,22 +56,40 @@ async function setup() {
 
     device.node.connect(outputNode);
 
-    makeSliders(device);
-
     const onOff = device.parametersById.get("on/off");
 
+    makeSliders(device);
+
     context.suspend();
-    document.getElementById("start-button").onclick = (e) => {
-      if (document.getElementById("start-button").innerHTML == "Start Audio") {
-        context.resume();
+    let start = document.getElementById("start-button")
+    let paramSliders = document.querySelector('.parameters');
+    start.addEventListener('click', () => {
+      let items = document.querySelectorAll('.slider');
+      if (start.innerHTML == "Start Audio") {
+        if(!context.resume()){
+          context.resume;
+        };
+        paramSliders.classList.toggle('shiftDown', false);
+        paramSliders.classList.toggle('shiftUp', true);
+        [].forEach.call(items, el => {
+          if (el !== this) 
+            el.classList.toggle('transparent', false);
+            el.classList.toggle('opaque', true);
+        });
         onOff.value = 1;
-        document.getElementById("start-button").innerHTML = "Stop Audio";
+        start.innerHTML = "Stop Audio";
       } else {
-        context.suspend();
+        [].forEach.call(items, el => {
+          if (el !== this) 
+            el.classList.toggle('opaque', false);  
+            el.classList.toggle('transparent', true);
+        });
+        paramSliders.classList.toggle('shiftUp', false);
+        paramSliders.classList.toggle('shiftDown', true);
         onOff.value = 0;
-        document.getElementById("start-button").innerHTML = "Start Audio";
+        start.innerHTML = "Start Audio";
       }
-    }
+    });
 }
 
 function makeSliders(device) {
@@ -155,6 +173,9 @@ function makeSliders(device) {
 
     // Store the slider and text by name so we can access them later
     uiElements[param.id] = { slider, text };
+
+    sliderContainer.setAttribute('class', 'slider');
+    sliderContainer.setAttribute('style', 'font-family: "Andale Mono", monospace; opacity: 0;')
 
     // Add the slider element
     pdiv.appendChild(sliderContainer);
