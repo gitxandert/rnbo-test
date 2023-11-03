@@ -1,0 +1,35 @@
+<svg width="device-width" height="device-height" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Mask group">
+        <g id="Mask group_2">
+            <g id="circles">
+                <rect
+                    width="120"
+                    height="100"
+                    fill="black"
+                />
+                <circle id="circle3"
+                    cx="60"
+                    cy="40"
+                    r="38"
+                    fill="#464646"
+                />
+                <g id="circle2">
+                    <circle
+                        cx="60" 
+                        cy="40" 
+                        r="32" 
+                        fill="#908E8E"
+                    />
+                </g>
+                <g id="circle1">
+                    <circle
+                        cx="60" 
+                        cy="40" 
+                        r="26.5" 
+                        fill="#E5E2E2"
+                    />
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
